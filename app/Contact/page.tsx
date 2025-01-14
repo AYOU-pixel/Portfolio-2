@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import styled from "@emotion/styled";
 
 // Styled Components
@@ -7,8 +6,12 @@ const Section = styled.section`
   position: relative;
   background: #121212;
   color: #ffffff;
-  padding: 5rem 1.5rem;
+  padding: 4rem 1rem; /* Adjusted padding for smaller screens */
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    padding: 5rem 1.5rem; /* Larger padding for larger screens */
+  }
 `;
 
 const BackgroundGlow = styled.div`
@@ -29,7 +32,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 3rem;
+  font-size: 2.5rem; /* Smaller font size for smaller screens */
   font-weight: 800;
   margin-bottom: 1rem;
   background: linear-gradient(to right, #4f46e5, #7c3aed);
@@ -40,22 +43,31 @@ const Title = styled.h2`
   &:hover {
     transform: scale(1.05);
   }
+
+  @media (min-width: 768px) {
+    font-size: 3rem; /* Larger font size for larger screens */
+  }
 `;
 
 const Subtitle = styled.p`
   color: #9ca3af;
-  font-size: 1.125rem;
-  margin-bottom: 3rem;
+  font-size: 1rem; /* Smaller font size for smaller screens */
+  margin-bottom: 2rem; /* Adjusted margin for smaller screens */
   transition: opacity 0.3s ease;
 
   &:hover {
     opacity: 1;
   }
+
+  @media (min-width: 768px) {
+    font-size: 1.125rem; /* Larger font size for larger screens */
+    margin-bottom: 3rem;
+  }
 `;
 
 const Form = styled.form`
   background: #1f1f1f;
-  padding: 2.5rem;
+  padding: 1.5rem; /* Adjusted padding for smaller screens */
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   border: 1px solid #2d2d2d;
@@ -64,6 +76,10 @@ const Form = styled.form`
   &:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
     transform: translateY(-5px);
+  }
+
+  @media (min-width: 768px) {
+    padding: 2.5rem; /* Larger padding for larger screens */
   }
 `;
 
@@ -83,19 +99,19 @@ const FormGroup = styled.div`
     width: 100%;
     padding: 0.75rem;
     border-radius: 0.5rem;
-    border: none;
+    border: 1px solid transparent; /* Added for better focus state */
     background: #2d2d2d;
     color: #ffffff;
     font-size: 1rem;
     outline: none;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
     &::placeholder {
       color: #6b7280;
     }
 
     &:focus {
-      border: 1px solid #7c3aed;
+      border-color: #7c3aed;
       box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
     }
   }
@@ -114,6 +130,7 @@ const SubmitButton = styled.button`
   font-size: 1rem;
   border: none;
   border-radius: 0.5rem;
+  cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
@@ -125,24 +142,20 @@ const SubmitButton = styled.button`
   &:active {
     transform: translateY(0);
   }
+
+  &:focus {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+  }
 `;
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "Ayoub",
-    email: "ayoubpc938@gmail.com",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    // You can implement further submission logic here
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    console.log("Form Data:", data); // Log form data for debugging
+    alert("Thank you for your message!"); // Replace with actual form submission logic
   };
 
   return (
@@ -159,7 +172,7 @@ export default function Contact() {
         </Subtitle>
 
         {/* Contact Form */}
-        <Form method="POST" action="#" onSubmit={handleSubmit}>
+        <Form method="POST" onSubmit={handleSubmit}>
           {/* Name Field */}
           <FormGroup>
             <label htmlFor="name">Your Name</label>
@@ -170,8 +183,6 @@ export default function Contact() {
               placeholder="Enter your name"
               required
               aria-label="Your Name"
-              value={formData.name}
-              onChange={handleChange}
             />
           </FormGroup>
 
@@ -185,8 +196,6 @@ export default function Contact() {
               placeholder="Enter your email"
               required
               aria-label="Your Email"
-              value={formData.email}
-              onChange={handleChange}
             />
           </FormGroup>
 
@@ -200,8 +209,6 @@ export default function Contact() {
               placeholder="Write your message..."
               required
               aria-label="Your Message"
-              value={formData.message}
-              onChange={handleChange}
             ></textarea>
           </FormGroup>
 

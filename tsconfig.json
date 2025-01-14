@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/Contact/page.tsx"
+    "app/Contact/index.tsx"
 , "next.config.js"  ],
   "exclude": [
     "node_modules"
