@@ -1,16 +1,15 @@
-"use client";
+"use client"
 import styled from "@emotion/styled";
-
 // Styled Components
 const Section = styled.section`
   position: relative;
   background: #121212;
   color: #ffffff;
-  padding: 4rem 1rem; /* Adjusted padding for smaller screens */
+  padding: 4rem 1rem;
   overflow: hidden;
 
   @media (min-width: 768px) {
-    padding: 5rem 1.5rem; /* Larger padding for larger screens */
+    padding: 5rem 1.5rem;
   }
 `;
 
@@ -32,54 +31,38 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2.5rem; /* Smaller font size for smaller screens */
+  font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 1rem;
   background: linear-gradient(to right, #4f46e5, #7c3aed);
   -webkit-background-clip: text;
   color: transparent;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 
   @media (min-width: 768px) {
-    font-size: 3rem; /* Larger font size for larger screens */
+    font-size: 3rem;
   }
 `;
 
 const Subtitle = styled.p`
   color: #9ca3af;
-  font-size: 1rem; /* Smaller font size for smaller screens */
-  margin-bottom: 2rem; /* Adjusted margin for smaller screens */
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 1;
-  }
+  font-size: 1rem;
+  margin-bottom: 2rem;
 
   @media (min-width: 768px) {
-    font-size: 1.125rem; /* Larger font size for larger screens */
+    font-size: 1.125rem;
     margin-bottom: 3rem;
   }
 `;
 
 const Form = styled.form`
   background: #1f1f1f;
-  padding: 1.5rem; /* Adjusted padding for smaller screens */
+  padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   border: 1px solid #2d2d2d;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
-    transform: translateY(-5px);
-  }
 
   @media (min-width: 768px) {
-    padding: 2.5rem; /* Larger padding for larger screens */
+    padding: 2.5rem;
   }
 `;
 
@@ -99,20 +82,14 @@ const FormGroup = styled.div`
     width: 100%;
     padding: 0.75rem;
     border-radius: 0.5rem;
-    border: 1px solid transparent; /* Added for better focus state */
+    border: 1px solid transparent;
     background: #2d2d2d;
     color: #ffffff;
     font-size: 1rem;
     outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
     &::placeholder {
       color: #6b7280;
-    }
-
-    &:focus {
-      border-color: #7c3aed;
-      box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
     }
   }
 
@@ -131,33 +108,9 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(to right, #7c3aed, #4f46e5);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  &:focus {
-    outline: 2px solid #7c3aed;
-    outline-offset: 2px;
-  }
 `;
 
 export default function Contact() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    console.log("Form Data:", data); // Log form data for debugging
-    alert("Thank you for your message!"); // Replace with actual form submission logic
-  };
-
   return (
     <Section id="contact">
       {/* Background Glow */}
@@ -172,44 +125,23 @@ export default function Contact() {
         </Subtitle>
 
         {/* Contact Form */}
-        <Form method="POST" onSubmit={handleSubmit}>
+        <Form method="POST" action="/api/contact">
           {/* Name Field */}
           <FormGroup>
             <label htmlFor="name">Your Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter your name"
-              required
-              aria-label="Your Name"
-            />
+            <input type="text" id="name" name="name" placeholder="Enter your name" required />
           </FormGroup>
 
           {/* Email Field */}
           <FormGroup>
             <label htmlFor="email">Your Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-              aria-label="Your Email"
-            />
+            <input type="email" id="email" name="email" placeholder="Enter your email" required />
           </FormGroup>
 
           {/* Message Field */}
           <FormGroup>
             <label htmlFor="message">Your Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              placeholder="Write your message..."
-              required
-              aria-label="Your Message"
-            ></textarea>
+            <textarea id="message" name="message" rows={5} placeholder="Write your message..." required></textarea>
           </FormGroup>
 
           {/* Submit Button */}
