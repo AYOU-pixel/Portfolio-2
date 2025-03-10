@@ -11,12 +11,12 @@ import {
   Build,
   SportsEsports,
   MusicNote,
-  LinkedIn,
-  Twitter,
+  LinkedIn
 } from "@mui/icons-material";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import Image from "next/image";
+import Link from "next/link";
 
 // Keyframes for animations
 const fadeIn = keyframes`
@@ -364,17 +364,24 @@ export default function About() {
               software solutions using React, Next.js, and modern frontend technologies.
             </Typography>
             <SocialContainer>
+              <Link
+              href = "/Collaborate">
               <StyledButton variant="contained" aria-label="Contact me">
                 Contact me
               </StyledButton>
+              </Link>
               <SocialButton 
-                variant="contained" 
-                startIcon={<GitHub />} 
-                aria-label="View my projects on GitHub"
-                hovercolor="#333"
-              >
-                View Projects
-              </SocialButton>
+  variant="contained" 
+  startIcon={<GitHub />} 
+  aria-label="View my projects on GitHub"
+  hovercolor="#333"
+  component="a" 
+  href="https://github.com/AYOU-pixel" 
+  target="_blank" 
+  rel="noopener noreferrer" 
+>
+  View Projects
+</SocialButton>
             </SocialContainer>
           </div>
           <HeroImageContainer>
@@ -652,40 +659,37 @@ export default function About() {
 
       {/* Connect With Me Section */}
       <Section id="connect">
-        <SectionTitle variant="h4">Let's Connect</SectionTitle>
-        <Typography variant="body1" style={{ marginBottom: "2rem" }}>
-          I'm always open to new opportunities, collaborations, or just a friendly chat about web development.
-        </Typography>
-        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-          <SocialButton 
-            variant="contained" 
-            startIcon={<GitHub />} 
-            aria-label="GitHub profile"
-            hovercolor="#333"
-          >
-            GitHub
-          </SocialButton>
-          <SocialButton 
-            variant="contained" 
-            startIcon={<LinkedIn />} 
-            aria-label="LinkedIn profile"
-            hovercolor="#0077b5"
-          >
-            LinkedIn
-          </SocialButton>
-          <SocialButton 
-            variant="contained" 
-            startIcon={<Twitter />} 
-            aria-label="Twitter profile"
-            hovercolor="#1da1f2"
-          >
-            Twitter
-          </SocialButton>
-          <StyledButton variant="contained" aria-label="Email me">
-            Email Me
-          </StyledButton>
-        </div>
-      </Section>
+  <SectionTitle variant="h4">Let's Connect</SectionTitle>
+  <Typography variant="body1" style={{ marginBottom: "2rem" }}>
+    I'm always open to new opportunities, collaborations, or just a friendly chat about web development.
+  </Typography>
+  <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+    <SocialButton
+      variant="contained"
+      startIcon={<GitHub />}
+      aria-label="GitHub profile"
+      hovercolor="#333"
+      component="a"
+      href="https://github.com/AYOU-pixel"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub
+    </SocialButton>
+    <SocialButton
+      variant="contained"
+      startIcon={<LinkedIn />}
+      aria-label="LinkedIn profile"
+      hovercolor="#0077b5"
+      component="a"
+      href="https://www.linkedin.com/in/ayoub-rachd-0b344a322"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      LinkedIn
+    </SocialButton>
+  </div>
+</Section>
     </Container>
   );
 }
