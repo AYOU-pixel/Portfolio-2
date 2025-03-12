@@ -21,7 +21,7 @@ const projects = [
     title: "Sneaker Store",
     description: "Sleek e-commerce website for sneakers with smooth shopping experience...",
     image: "/eco.png",
-    link: "https://ayou-store.netlify.app",
+    link: "https://ecomerc-wm.vercel.app/",
   },
   {
     id: 3,
@@ -223,7 +223,7 @@ const Projects = () => {
         <div className="text-center mt-10">
           <Button
             variant="outlined"
-            href="/projects"
+            href="/morproject"
             startIcon={<Eye size={18} />}
             sx={{
               color: "#f1f5f9",
