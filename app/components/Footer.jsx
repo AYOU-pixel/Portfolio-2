@@ -47,9 +47,9 @@ export default function FooterSection() {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col items-center sm:items-start">
+          <div className="flex flex-col items-start">
             <h3 className="text-lg font-semibold text-white mb-3">Contact</h3>
-            <ul className="text-gray-200 space-y-3">
+            <ul className="text-gray-200 space-y-3 list-none pl-0">
               <li>
                 <a
                   href="mailto:ayoubprograma@gmail.com"
@@ -70,9 +70,9 @@ export default function FooterSection() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="flex flex-col items-start">
             <h3 className="text-lg font-semibold text-white mb-3">Quick Links</h3>
-            <ul className="space-y-3 text-gray-200">
+            <ul className="space-y-3 text-gray-200 list-none pl-0">
               <li>
                 <a
                   href="https://www.linkedin.com/in/ayoub-rachd-0b344a322"
